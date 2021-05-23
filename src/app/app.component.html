@@ -1,0 +1,21 @@
+<div class="painel">
+  <input #busca type="text">
+  <button (click)="carregarClima(busca.value)" >Buscar</button>
+  <p>id imagem : {{clima?.weather[0].id}} </p>
+  <p>temperatura : {{clima?.main.temp}} </p>
+  <p>sensacao termica : {{clima?.main.feels_like}} </p>
+  <p>temperatura minima : {{clima?.main.temp_min}} </p>
+  <p>temperatura maxima : {{clima?.main.temp_max}} </p>
+  <p>humidade : {{clima?.main.humidity}} </p>
+  <p>cidade : {{clima?.name}} </p>
+  <p>descricao tempo : {{clima?.weather[0].description}} </p>
+</div>
+
+
+
+
+
+
+
+
+
