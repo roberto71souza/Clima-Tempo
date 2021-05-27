@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ClimaHelpers } from './helpers/climaHelpers';
 import { RequisicaoWeatherApiService } from './servicos/requisicaoWeatherApi.service';
 
 @Component({
@@ -7,22 +9,52 @@ import { RequisicaoWeatherApiService } from './servicos/requisicaoWeatherApi.ser
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'ClimaTempoApp';
   clima: any;
-  constructor(private service: RequisicaoWeatherApiService) {}
-  ngOnInit(): void {}
+  helper: ClimaHelpers;
+  icone = 800;
+  erro = false;
 
-  carregarClima(local: string): void {
+  get data(): string {
+    return this.helper.formatData();
+  }
+
+  get hora(): any {
+    const dataHora = new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+    return dataHora;
+  }
+
+  constructor(private service: RequisicaoWeatherApiService) {
+    this.helper = new ClimaHelpers();
+  }
+
+  ngOnInit(): void {
+    setInterval(() => {
+      this.hora;
+    }, 1000);
+  }
+
+  carregarClima(local: NgForm): void {
     if (local != null) {
-      this.service.getWeather(local).subscribe(
-        (response) => {
-          this.clima = response,
-          console.log(this.clima);
-
-        },
-        (error) => {console.error(error);
-        },
-      );
+      this.service
+        .getWeather(local.value.busca)
+        .subscribe(
+          (response) => {
+            (this.clima = response),
+              (this.erro = false),
+              (this.icone = this.helper.getIconNumber(
+                this.clima.weather[0].id
+              ));
+          },
+          (error) => {
+            console.error(error), (this.erro = true);
+          }
+        )
+        .add(() => {
+          local.reset();
+        });
     }
   }
 }
