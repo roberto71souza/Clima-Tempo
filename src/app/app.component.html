@@ -25,7 +25,7 @@
       <p>{{ clima?.weather[0].description }}</p>
     </div>
     <div class="painel-clima">
-      <img src="../assets/{{ icone }}.png" [width]="120" alt="" />
+      <img src="assets/{{ icone }}.png" [width]="120" alt="" />
       <div *ngIf="clima">
         <p>
           temperatura : <b>{{ clima?.main.temp | number: "1.0-0" }}C°</b>
