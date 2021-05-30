@@ -1,20 +1,8 @@
-.conteudo {
-  background: url("../assets/background.jpg") 100% 100%;
-  height: auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.item {
-  padding: 30px;
-}
-
 .slogan {
   display: flex;
   gap: 50px;
   align-items: center;
+  justify-content: center;
 }
 
 .slogan > img {
@@ -23,6 +11,18 @@
 
 .slogan > h1 {
   font-size: 60px;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 220px);
+  align-items: center;
+}
+
+.item {
+  padding: 30px;
 }
 
 .painel {
@@ -74,7 +74,6 @@
 .painel-busca > form > input:focus::-webkit-input-placeholder {
   color: transparent;
   text-align: center;
-
 }
 
 .painel-busca > form > button {
@@ -165,7 +164,10 @@ footer {
   }
 
   footer {
-    font-size: 20px;
+    font-size: 18px;
     color: white;
   }
 }
+
+// @media (max-width: 400px) {
+// }

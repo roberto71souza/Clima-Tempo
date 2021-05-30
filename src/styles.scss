@@ -19,6 +19,7 @@
   border: 0;
   box-sizing: border-box;
   font-family: "Oswald-Light", sans-serif;
+  overflow-x: hidden;
 }
 
 input:-webkit-autofill,
@@ -30,5 +31,6 @@ input:-webkit-autofill:active {
 }
 
 html {
-  background-color: black;
+  background: url("assets/background.jpg") 100% 100%;
+  min-height: 100vh;
 }
