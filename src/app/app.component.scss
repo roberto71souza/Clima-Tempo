@@ -86,16 +86,11 @@
   cursor: pointer;
 }
 
-.painel-busca > button:hover {
+.painel-busca > form > button:hover {
   background-color: rgb(255, 255, 255);
-  border: 3px solid black;
+  border: 2px solid black;
   color: black;
   transition: 0.2s;
-}
-
-.painel-busca > button > i {
-  font-size: 20px;
-  margin: 0 auto;
 }
 
 .error {

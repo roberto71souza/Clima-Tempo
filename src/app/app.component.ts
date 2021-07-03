@@ -31,9 +31,36 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.obterGeolocalizacao();
     setInterval(() => {
       this.hora;
     }, 1000);
+  }
+
+  obterGeolocalizacao(): void {
+    let latitude: number;
+    let longitude: number;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
+          this.service.getWeatherGeolocalizacao(latitude, longitude).subscribe(
+            (response) => {
+              this.clima = response;
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        },
+        (error) => {
+          console.log(error);
+        },
+        { enableHighAccuracy: true, maximumAge: 20000, timeout: 20000 }
+      );
+    }
   }
 
   carregarClima(local: NgForm): void {
@@ -49,7 +76,7 @@ export class AppComponent implements OnInit {
               ));
           },
           (error) => {
-            console.error(error), (this.erro = true);
+            console.error(error), (this.erro = true), (this.clima = null);
           }
         )
         .add(() => {
