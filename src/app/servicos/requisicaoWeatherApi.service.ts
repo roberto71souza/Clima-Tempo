@@ -14,7 +14,7 @@ export class RequisicaoWeatherApiService {
   }
 
   getWeatherGeolocalizacao(lat: number, long: number): Observable<any> {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=2e3c02c2be0295cc4a6a5c3a29533d6a&units=metric
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=pt&appid=2e3c02c2be0295cc4a6a5c3a29533d6a&units=metric
     `;
     return this.http.get<any>(url);
   }
